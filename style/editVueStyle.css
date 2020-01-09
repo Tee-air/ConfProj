@@ -1,0 +1,44 @@
+body {
+  background: #f5f5f5;
+}
+
+#chooseObject {
+  height: 33vh;
+  border-bottom: 1px solid black;
+}
+
+#chooseTool {
+  height: 33vh;
+  border-bottom: 1px solid black;
+}
+
+#configureElements {
+  height: 33vh;
+  
+}
+
+.toolbox {
+  position: fixed;
+  float: left;
+  width: 15vw;
+  height: 100vh;
+  background: blue;
+  top: 0;
+}
+
+#templateView {
+  float: right;
+  display: inline-block;
+  height: 100vh;
+  width: 85vw;
+}
+
+.defaultBlock {
+  background: red;
+  border: 1px solid black;
+  margin-top: 1vh;
+  margin-left: 1vh;
+  height: 10vh;
+  width: 10vw;
+  float: left;
+}

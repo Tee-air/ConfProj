@@ -1,0 +1,44 @@
+.toolBox{
+    background: #b2b2b2;
+    height: 100%;
+    width: 15%; 
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+.toolBoxElt{
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.cut3{
+    width: 33%;
+    text-align: center;
+}
+
+.rowin{
+    padding-top: 3%;
+    width: 100%;
+    display: inline-block;
+}
+
+#selectable-1 .ui-selecting {
+    background: #707070 ; 
+}
+
+.selectableBorder{
+    border: 1px solid #000;
+}
+
+.defaultBloc{
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    border:  1px solid black;
+    margin: 2%;
+}
+body{
+    background: blue;
+}
