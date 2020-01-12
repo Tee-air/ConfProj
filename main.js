@@ -9,6 +9,7 @@ var path = require('path');
 var got = require('got');
 //var packery = require('packery');
 var PouchDB = require('pouchdb');
+var bodyParser = require('body-parser')
 
 
 
@@ -19,6 +20,11 @@ app.use(express.static(__dirname + '/lib/font-awesome'));
 app.use(express.static(__dirname + '/lib/bootstrap'));
 app.use(express.static(__dirname + '/lib'));
 app.use(express.static(__dirname + '/node_modules'));
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
 console.log('Server ON');
 
@@ -50,7 +56,7 @@ app.get('/connectionBDD', function(req, res){
 });
 
 app.post('/addBlock', function(req, res){
-    console.log(req.body.jsonObject);
+    console.log(req.body.id);
     console.log("requested");
 });
 
