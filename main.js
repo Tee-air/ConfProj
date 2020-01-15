@@ -60,6 +60,7 @@ app.post('/addBlock', function(req, res){
     console.log(req.body);
 
     console.log("requested");
+    return "yes";
 });
 
 
