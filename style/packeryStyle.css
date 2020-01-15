@@ -7,10 +7,19 @@ body { font-family: sans-serif; }
 
 
 
+
 .grid {
-  background: #DDD;
   /*max-width: 1200px; */
   position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.gridDad {
+  background: white;
+  /*max-width: 1200px; 
+  position: relative;*/
   width: 100%;
   top: 0;
   left: 0;
@@ -31,6 +40,11 @@ body { font-family: sans-serif; }
   height: 100px;
   background: #C09;
   border: 2px solid hsla(0, 0%, 0%, 0.5);
+}
+
+.gridDad-item {
+  float: left;
+  
 }
 
 .grid-item--width2 { width: 200px; }
@@ -78,4 +92,14 @@ body { font-family: sans-serif; }
 
 .selectedElt{
     background: green;
+}
+
+#toolMenu{
+  width:20%;
+  height:100%;
+  border: 2px solid hsla(0, 0%, 0%, 0.5);
+}
+
+#gridContent{
+  width:80%;
 }

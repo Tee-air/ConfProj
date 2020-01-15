@@ -10,6 +10,7 @@ var got = require('got');
 //var packery = require('packery');
 var PouchDB = require('pouchdb');
 var bodyParser = require('body-parser')
+var manager = require('./lib/ManagePackery/manageVue.js')
 
 
 
@@ -21,7 +22,7 @@ app.use(express.static(__dirname + '/lib/bootstrap'));
 app.use(express.static(__dirname + '/lib'));
 app.use(express.static(__dirname + '/node_modules'));
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
@@ -41,9 +42,9 @@ app.get('/Profile', function(req, res){
 });
 
 app.get('/editVue', function(req, res) {
-    console.log('yes');
-    res.sendFile('editWithPackery.html', { root: path.join(__dirname, '/lib/vues/') });
-    
+    //res.sendFile('editWithPackery.html', { root: path.join(__dirname, '/lib/vues/') });
+    res.sendFile('vueEditor.html', { root: path.join(__dirname, '/lib/vues/') });
+    //new Vue("", 1, "VueTest");
 });
 
 app.get('/connectionBDD', function(req, res){
@@ -57,8 +58,23 @@ app.get('/connectionBDD', function(req, res){
 
 app.post('/addBlock', function(req, res){
     console.log(req.body);
+
     console.log("requested");
 });
+
+
+app.post('/saveAll', function(req, res){
+    console.log(req.body);
+
+    var db = new PouchDB('https://localhost:5984/config');
+    db.get('vue_1').then(function (doc){
+        //doc.blocks = req.body;
+    });
+});
+
+function getBlocks(){
+
+}
 
 
 app.listen(8081);
