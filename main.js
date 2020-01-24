@@ -1,3 +1,5 @@
+//Quel Modules sont vraiment utilisé et important.
+
 var http = require('http');
 var url = require('url');
 var querystring = require('querystring');
@@ -5,7 +7,6 @@ var querystring = require('querystring');
 var fs = require('fs');
 var express = require('express');
 var path = require('path');
-//var jqueryUI = require('jquery-ui');
 var got = require('got');
 //var packery = require('packery');
 var PouchDB = require('pouchdb');
@@ -15,7 +16,7 @@ var manager = require('./lib/ManagePackery/manageVue.js')
 
 
 var app = express();
-
+// TODO : Réduire au minimum les fichiers transiter vers le client
 app.use(express.static(__dirname + '/style'));
 app.use(express.static(__dirname + '/lib/font-awesome'));
 app.use(express.static(__dirname + '/lib/bootstrap'));
@@ -75,6 +76,7 @@ app.post('/saveAll', function (req, res) {
 
     var db = new PouchDB('https://localhost:5984/config');
     db.get('vue_1').then(function (doc) {
+        console.log(doc);
         return res.send(doc);
     });
 

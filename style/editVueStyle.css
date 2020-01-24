@@ -28,7 +28,6 @@ body {
 
 #templateView {
   float: right;
-  display: inline-block;
   height: 100vh;
   width: 85vw;
 }
@@ -41,4 +40,14 @@ body {
   height: 10vh;
   width: 10vw;
   float: left;
+}
+
+
+#toolMenu button{
+  margin-top: 2%;
+}
+
+ul li {
+  margin-right: 3%;
+  margin-left: 1%;
 }
