@@ -9,9 +9,8 @@ var express = require('express');
 var path = require('path');
 var got = require('got');
 //var packery = require('packery');
-var PouchDB = require('pouchdb');
-var bodyParser = require('body-parser')
-var manager = require('./lib/ManagePackery/manageVue.js')
+var bodyParser = require('body-parser');
+var managerVue = require('./lib/ManagePackery/manageVue.js');
 
 
 
@@ -47,11 +46,14 @@ app.get('/Profile', function (req, res) {
 });
 
 app.get('/editVue', function (req, res) {
-    //res.sendFile('editWithPackery.html', { root: path.join(__dirname, '/lib/vues/') });
+
+    var managerV = new managerVue();
+    var  doc = managerV.initVue(1);
+    
     res.sendFile('vueEditor.html', {
         root: path.join(__dirname, '/lib/vues/')
     });
-    //new Vue("", 1, "VueTest");
+    //return res.send(doc);
 });
 
 app.get('/connectionBDD', function (req, res) {
@@ -73,19 +75,10 @@ app.post('/addBlock', function (req, res) {
 
 app.post('/saveAll', function (req, res) {
     console.log(req.body);
-
-    var db = new PouchDB('https://localhost:5984/config');
-    db.get('vue_1').then(function (doc) {
-        console.log(doc);
-        return res.send(doc);
-    });
-
+    var managerV = new managerVue();
+    managerV.updateBlocks(req.body);
     return res.send("yes*n");
 });
-
-function getBlocks() {
-
-}
 
 
 app.listen(8081);
