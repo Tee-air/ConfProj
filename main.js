@@ -8,6 +8,7 @@ var fs = require('fs');
 var express = require('express');
 var path = require('path');
 var got = require('got');
+var fs = require('fs');
 //var packery = require('packery');
 var bodyParser = require('body-parser');
 var managerVue = require('./lib/ManagePackery/manageVue.js');
@@ -45,24 +46,39 @@ app.get('/Profile', function (req, res) {
     //findya.ajaxReq('https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/XxBipBipxX?api_key='+keyAPI, '');
 });
 
-app.get('/editVue', function (req, res) {
+//app.get('/editVue', function (req, res) {
 
+    //var managerV = new managerVue();
+    //var  doc = managerV.initVue(1);
+    
+    //res.sendFile('vueEditor.html', {
+        //root: path.join(__dirname, '/lib/vues/')
+    //});
+    //res.render("contentDoc",{content: doc.content});
+//});
+
+app.use('/editVue', (req, res, next) => {
     var managerV = new managerVue();
     var  doc = managerV.initVue(1);
     
+    fs.readFile('./lib/vues/vueEditor.html', 'utf8', function(err, data){
+        console.log(data);
+        console.log(data.getElementById("toolMenu"));
+    });
+
     res.sendFile('vueEditor.html', {
         root: path.join(__dirname, '/lib/vues/')
     });
-    //return res.send(doc);
-});
+
+    console.log(doc);
+    res.status(200).json({content: doc});
+  });
 
 app.get('/connectionBDD', function (req, res) {
     var server = "DESKTOP-J384JJ1";
     var user = "TeeAir";
     var bdd = "ProjetBI";
     MSSQLConnect();
-
-
 });
 
 app.post('/addBlock', function (req, res) {
