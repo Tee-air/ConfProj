@@ -13,6 +13,8 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var managerVue = require('./lib/ManagePackery/manageVue.js');
 
+var DomParser = require('dom-parser');
+
 
 
 var app = express();
@@ -46,33 +48,21 @@ app.get('/Profile', function (req, res) {
     //findya.ajaxReq('https://euw1.api.riotgames.com/tft/summoner/v1/summoners/by-name/XxBipBipxX?api_key='+keyAPI, '');
 });
 
-//app.get('/editVue', function (req, res) {
-
-    //var managerV = new managerVue();
-    //var  doc = managerV.initVue(1);
-    
-    //res.sendFile('vueEditor.html', {
-        //root: path.join(__dirname, '/lib/vues/')
-    //});
-    //res.render("contentDoc",{content: doc.content});
-//});
-
-app.use('/editVue', (req, res, next) => {
+async function testAwait(){
     var managerV = new managerVue();
-    var  doc = managerV.initVue(1);
-    
-    fs.readFile('./lib/vues/vueEditor.html', 'utf8', function(err, data){
-        console.log(data);
-        console.log(data.getElementById("toolMenu"));
-    });
+    var  doc = await managerV.initVue(1);
+    var content = managerV.getHtmlBlocks(doc.content)
 
-    res.sendFile('vueEditor.html', {
-        root: path.join(__dirname, '/lib/vues/')
-    });
+    return content;
+}
 
-    console.log(doc);
-    res.status(200).json({content: doc});
-  });
+app.get('/editVue', function (req, res) {
+    var content = testAwait();
+    console.log("LOG 2");
+    //var content = managerV.getHtmlBlocks(doc.content)
+    res.sendFile(__dirname+'/lib/vues/vueEditor.html', {contentToAdd: content});
+});
+
 
 app.get('/connectionBDD', function (req, res) {
     var server = "DESKTOP-J384JJ1";
