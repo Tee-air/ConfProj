@@ -26,4 +26,27 @@ var server = http.createServer(function(req, res) {
     }    
 });
 
+
+app.use('/editVue', (req, res, next) => {
+    var managerV = new managerVue();
+    var  doc = managerV.initVue(1);
+    
+    fs.readFile('./lib/vues/vueEditor.html', 'utf8', function(err, data){
+        //let parser = new DomParser();
+        //var htmlDoc = parser.parseFromString(data, "text/html");
+        //console.log(htmlDoc.getElementById("gridContent").firstChild);
+        //htmlDoc.getElementById("gridContent").firstChild.innerHTML = managerV.getHtmlBlocks;
+        //console.log(document.getElementById("toolMenu"));
+        res.status(200).send(htmlDoc);
+
+    });
+
+    res.sendFile('htmlDoc', {
+        root: path.join(__dirname, '/lib/vues/')
+    });
+ 
+  });
+
+
+
 server.listen('8081');
