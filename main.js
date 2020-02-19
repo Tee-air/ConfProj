@@ -76,8 +76,6 @@ app.get('/connectionBDD', function (req, res) {
 
 app.post('/addBlock', function (req, res) {
     console.log(req.body);
-
-
     return res.send("yes");
 });
 
