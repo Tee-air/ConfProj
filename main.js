@@ -113,9 +113,9 @@ app.get('/showData', async function (req, res) {
 
 app.get('/showDataAPI', function (req, res) {
     let managerC = new managerCon("API");
-    managerC.keyAPI = "RGAPI-9425b2f6-d413-44d0-9705-c17c674e9914";
+    managerC.keyAPI = "RGAPI-725f20e9-b119-494a-8a43-cc01c63edb6c";
     let data = managerC.getCon();
-
+    console.log(data);
     res.status(200).json(data);
 });
 
