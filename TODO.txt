@@ -1,0 +1,9 @@
+## Ce qui a été fait:
+- npm i -g @vue/cli
+- vue create client
+
+## Ce qui dois être fait:
+1. Utiliser le projet gestionPatient pour la logique de la structure
+2. importé le front dans les différents composants
+3. Mettre en place une API node.js 
+4. Ajouter des graphiques D3.js ou autre librairies!
